@@ -20,4 +20,4 @@ jobs:
         pip install -r requirements-dev.txt
     - name: Build :pick:
       run: |
-        pyinstaller --onefile --C:\Users\Vignesh\PycharmProjects\Test\main.py
+        pyinstaller --main.py

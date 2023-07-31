@@ -1,0 +1,23 @@
+name: Testing
+on:
+  push:
+    branches: main
+jobs:
+  build-on-windows:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: [3.11]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4.5.0
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies :rocket:
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+    - name: Build :pick:
+      run: |
+        pyinstaller --onefile --C:\Users\Vignesh\PycharmProjects\Test\main.py
